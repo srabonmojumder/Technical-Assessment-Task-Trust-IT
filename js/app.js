@@ -44,43 +44,53 @@
     // Initial label sync (theme class is already applied by the head bootstrap)
     applyTheme(root.classList.contains('dark') ? 'dark' : 'light');
 
-    /* ---------- 2. Mobile menu ---------- */
+    /* ---------- 2. Mobile drawer ---------- */
     const hamburger = $('#hamburger');
-    const mobileMenu = $('#mobileMenu');
+    const drawer = $('#mobileMenu');
+    const backdrop = $('#drawerBackdrop');
+    const drawerClose = $('#drawerClose');
 
-    const closeMobileMenu = () => {
-        if (!hamburger || !mobileMenu) return;
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        mobileMenu.setAttribute('aria-hidden', 'true');
+    const setDrawer = (open) => {
+        if (!drawer || !backdrop || !hamburger) return;
+        drawer.classList.toggle('open', open);
+        backdrop.classList.toggle('open', open);
+        hamburger.classList.toggle('open', open);
+        hamburger.setAttribute('aria-expanded', String(open));
+        drawer.setAttribute('aria-hidden', String(!open));
+        backdrop.setAttribute('aria-hidden', String(!open));
+
+        if (open) {
+            // Compute scrollbar width before locking, so the page doesn't shift
+            const sbWidth = window.innerWidth - document.documentElement.clientWidth;
+            document.documentElement.style.setProperty('--scrollbar-w', sbWidth + 'px');
+            document.body.classList.add('drawer-open');
+            // Move focus to the close button for keyboard users
+            if (drawerClose) drawerClose.focus({ preventScroll: true });
+        } else {
+            document.body.classList.remove('drawer-open');
+            document.documentElement.style.removeProperty('--scrollbar-w');
+        }
     };
 
-    const toggleMobileMenu = () => {
-        if (!hamburger || !mobileMenu) return;
-        const isOpen = hamburger.classList.toggle('open');
-        mobileMenu.classList.toggle('open', isOpen);
-        hamburger.setAttribute('aria-expanded', String(isOpen));
-        mobileMenu.setAttribute('aria-hidden', String(!isOpen));
-    };
+    const closeDrawer = () => setDrawer(false);
+    const openDrawer = () => setDrawer(true);
+    const toggleDrawer = () => setDrawer(!drawer?.classList.contains('open'));
 
-    if (hamburger) hamburger.addEventListener('click', toggleMobileMenu);
+    if (hamburger) hamburger.addEventListener('click', toggleDrawer);
+    if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+    if (backdrop) backdrop.addEventListener('click', closeDrawer);
 
-    // Close mobile menu when a nav link is clicked
-    $$('.mobile-link').forEach(link => link.addEventListener('click', closeMobileMenu));
+    // Close when any link inside the drawer is clicked
+    $$('.mobile-link').forEach(link => link.addEventListener('click', closeDrawer));
 
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeMobileMenu();
+        if (e.key === 'Escape' && drawer?.classList.contains('open')) closeDrawer();
     });
 
-    // Close when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!mobileMenu || !hamburger) return;
-        if (!mobileMenu.classList.contains('open')) return;
-        const insideMenu = mobileMenu.contains(e.target);
-        const onHamburger = hamburger.contains(e.target);
-        if (!insideMenu && !onHamburger) closeMobileMenu();
+    // Auto-close if the viewport grows past the mobile breakpoint while open
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768 && drawer?.classList.contains('open')) closeDrawer();
     });
 
     /* ---------- 3. Navbar shadow on scroll ---------- */

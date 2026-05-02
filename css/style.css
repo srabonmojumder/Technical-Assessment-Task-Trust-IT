@@ -44,8 +44,20 @@ figure.img-failed .img-fallback { display: grid; }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ---------- Mobile menu open state ---------- */
-.mobile-menu.open { max-height: 480px; }
+/* ---------- Mobile drawer: open state ---------- */
+.drawer.open {
+    transform: translateX(0);
+}
+.drawer-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+/* When drawer is open, lock background scrolling */
+body.drawer-open {
+    overflow: hidden;
+    /* prevent layout shift from scrollbar disappearing */
+    padding-right: var(--scrollbar-w, 0);
+}
 
 /* ---------- Active nav link ---------- */
 .nav-link.active {

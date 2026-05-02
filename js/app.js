@@ -295,7 +295,40 @@
         });
     }
 
-    /* ---------- 8. Year stamp ---------- */
+    /* ---------- 8. Newsletter (footer) ---------- */
+    const newsletterForm = $('#newsletterForm');
+    if (newsletterForm) {
+        const emailInput = $('#newsletterEmail');
+        const msgEl = $('#newsletterMsg');
+        const labelEl = newsletterForm.querySelector('.newsletter-label');
+        const NEWSLETTER_EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+        const setMsg = (text, ok) => {
+            if (!msgEl) return;
+            msgEl.textContent = text;
+            msgEl.classList.remove('hidden');
+            msgEl.classList.toggle('text-emerald-500', !!ok);
+            msgEl.classList.toggle('text-red-500', !ok);
+        };
+
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const value = (emailInput?.value || '').trim();
+            if (!value) return setMsg('Please enter your email.', false);
+            if (!NEWSLETTER_EMAIL_RE.test(value)) return setMsg('Please enter a valid email address.', false);
+
+            if (labelEl) labelEl.textContent = 'Sending…';
+            emailInput.disabled = true;
+            setTimeout(() => {
+                newsletterForm.reset();
+                emailInput.disabled = false;
+                if (labelEl) labelEl.textContent = 'Subscribe';
+                setMsg('Subscribed! Check your inbox to confirm.', true);
+            }, 600);
+        });
+    }
+
+    /* ---------- 9. Year stamp ---------- */
     const yearEl = $('#year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 })();

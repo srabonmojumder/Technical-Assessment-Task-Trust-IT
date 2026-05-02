@@ -291,63 +291,120 @@
                         </ul>
                     </div>
 
-                    <!-- Hero visual -->
+                    <!-- Hero visual: project dashboard mockup -->
                     <div class="relative max-w-[540px] mx-auto w-full" data-reveal>
-                        <div class="relative rounded-[28px] p-[22px] -rotate-[1.5deg] hover:rotate-0 hover:-translate-y-1 transition-transform duration-500 bg-white/90 dark:bg-surface-dark/90 border border-line dark:border-line-dark backdrop-blur-md shadow-big shadow-glow dark:shadow-big-dark">
-                            <div class="flex items-center gap-3 pb-4 border-b border-line dark:border-line-dark mb-[18px]">
+                        <div class="relative rounded-[28px] p-[22px] -rotate-[1.5deg] hover:rotate-0 hover:-translate-y-1 transition-transform duration-500 bg-white/95 dark:bg-surface-dark/95 border border-line dark:border-line-dark backdrop-blur-md shadow-big shadow-glow dark:shadow-big-dark">
+                            <!-- Browser-style header -->
+                            <div class="flex items-center gap-3 pb-4 border-b border-line dark:border-line-dark mb-5">
                                 <div class="inline-flex gap-1.5" aria-hidden="true">
                                     <span class="w-[11px] h-[11px] rounded-full bg-[#ff6058]"></span>
                                     <span class="w-[11px] h-[11px] rounded-full bg-[#ffbd2e]"></span>
                                     <span class="w-[11px] h-[11px] rounded-full bg-[#28c840]"></span>
                                 </div>
-                                <span class="font-display text-[13.5px] font-semibold text-ink-soft dark:text-white/60 ml-1">deploy.sh</span>
+                                <span class="font-mono text-[12px] text-ink-mute ml-1">trustit.dev / dashboard</span>
                                 <span class="ml-auto px-2.5 py-1 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[.08em] bg-emerald-500/12 text-emerald-500 rounded-full">
                                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse-dot"></span>live
                                 </span>
                             </div>
 
-                            <pre class="m-0 mb-[18px] px-[18px] py-4 bg-page-alt dark:bg-page-dark-alt border border-line dark:border-line-dark rounded-[14px] font-mono text-[13px] leading-[1.7] text-ink dark:text-white overflow-hidden whitespace-pre"><code><span class="text-ink-mute italic">// Trust-IT pipeline</span>
-<span class="text-purple-400 font-semibold">const</span> app = <span class="text-brand font-semibold">createService</span>({
-  <span class="text-cyan-500">region</span>: <span class="text-emerald-500">'eu-west-1'</span>,
-  <span class="text-cyan-500">scale</span>: <span class="text-emerald-500">'auto'</span>,
-  <span class="text-cyan-500">secure</span>: <span class="text-amber-500 font-semibold">true</span>,
-});
-
-<span class="text-purple-400 font-semibold">await</span> app.<span class="text-brand font-semibold">deploy</span>();
-<span class="text-ink-mute italic">// ✓ shipped in 12s</span></code></pre>
-
-                            <div class="grid grid-cols-2 gap-3.5">
-                                <div class="flex flex-col gap-1.5 px-3.5 py-3 bg-page-alt dark:bg-page-dark-alt border border-line dark:border-line-dark rounded-[14px]">
-                                    <span class="text-[11.5px] font-semibold text-ink-mute uppercase tracking-[.08em]">Latency</span>
-                                    <div class="h-1.5 rounded-full bg-line dark:bg-line-dark overflow-hidden">
-                                        <div class="h-full rounded-full bg-grad-primary animate-bar-grow" style="--w: 18%;"></div>
+                            <!-- Project header row -->
+                            <div class="flex items-start justify-between gap-3 mb-4">
+                                <div class="min-w-0">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span class="grid place-items-center w-7 h-7 rounded-lg bg-grad-primary text-white flex-none">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 6v6c0 5 3.8 9.4 9 10 5.2-.6 9-5 9-10V6l-9-4z"/></svg>
+                                        </span>
+                                        <h3 class="font-display font-bold text-[15px] truncate">Project Health</h3>
                                     </div>
-                                    <span class="font-display text-[18px] font-bold">38ms</span>
+                                    <p class="text-[12px] text-ink-mute">Last 7 days · all systems operational</p>
                                 </div>
-                                <div class="flex flex-col gap-1.5 px-3.5 py-3 bg-page-alt dark:bg-page-dark-alt border border-line dark:border-line-dark rounded-[14px]">
-                                    <span class="text-[11.5px] font-semibold text-ink-mute uppercase tracking-[.08em]">Throughput</span>
-                                    <div class="h-1.5 rounded-full bg-line dark:bg-line-dark overflow-hidden">
-                                        <div class="h-full rounded-full animate-bar-grow" style="--w: 82%; background: linear-gradient(90deg, #22d3ee, #10b981);"></div>
+                                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[12px] font-semibold text-emerald-500 bg-emerald-500/10 flex-none">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+                                    +24%
+                                </span>
+                            </div>
+
+                            <!-- Activity chart (7-day vertical bars) -->
+                            <div class="relative px-1 mb-4 bg-page-alt dark:bg-page-dark-alt border border-line dark:border-line-dark rounded-[14px] p-4">
+                                <div class="flex items-end justify-between gap-2 h-[88px]">
+                                    <div class="flex-1 flex flex-col items-center justify-end gap-1.5">
+                                        <div class="w-full rounded-md bg-gradient-to-t from-[#5b8dff]/40 to-[#5b8dff]" style="height: 38%;"></div>
                                     </div>
-                                    <span class="font-display text-[18px] font-bold">12.4k/s</span>
+                                    <div class="flex-1 flex flex-col items-center justify-end gap-1.5">
+                                        <div class="w-full rounded-md bg-gradient-to-t from-[#5b8dff]/40 to-[#5b8dff]" style="height: 56%;"></div>
+                                    </div>
+                                    <div class="flex-1 flex flex-col items-center justify-end gap-1.5">
+                                        <div class="w-full rounded-md bg-gradient-to-t from-[#5b8dff]/40 to-[#5b8dff]" style="height: 44%;"></div>
+                                    </div>
+                                    <div class="flex-1 flex flex-col items-center justify-end gap-1.5">
+                                        <div class="w-full rounded-md bg-gradient-to-t from-[#5b8dff]/40 to-[#5b8dff]" style="height: 72%;"></div>
+                                    </div>
+                                    <div class="flex-1 flex flex-col items-center justify-end gap-1.5">
+                                        <div class="w-full rounded-md bg-gradient-to-t from-[#5b8dff]/40 to-[#5b8dff]" style="height: 60%;"></div>
+                                    </div>
+                                    <div class="flex-1 flex flex-col items-center justify-end gap-1.5">
+                                        <div class="w-full rounded-md bg-gradient-to-t from-[#8a5bff]/50 to-[#8a5bff]" style="height: 92%;"></div>
+                                    </div>
+                                    <div class="flex-1 flex flex-col items-center justify-end gap-1.5">
+                                        <div class="w-full rounded-md bg-gradient-to-t from-[#8a5bff]/40 to-[#8a5bff]" style="height: 78%;"></div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between mt-2 text-[10px] text-ink-mute font-semibold tracking-[.08em] uppercase px-0.5">
+                                    <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                                </div>
+                            </div>
+
+                            <!-- KPI row -->
+                            <div class="grid grid-cols-3 gap-2.5 mb-4">
+                                <div class="flex flex-col gap-0.5 p-3 bg-page-alt dark:bg-page-dark-alt border border-line dark:border-line-dark rounded-[12px]">
+                                    <span class="text-[10.5px] font-semibold text-ink-mute uppercase tracking-[.08em]">Uptime</span>
+                                    <span class="font-display text-[16px] font-bold">99.99%</span>
+                                </div>
+                                <div class="flex flex-col gap-0.5 p-3 bg-page-alt dark:bg-page-dark-alt border border-line dark:border-line-dark rounded-[12px]">
+                                    <span class="text-[10.5px] font-semibold text-ink-mute uppercase tracking-[.08em]">Latency</span>
+                                    <span class="font-display text-[16px] font-bold">38<span class="text-[12px] text-ink-mute font-medium">ms</span></span>
+                                </div>
+                                <div class="flex flex-col gap-0.5 p-3 bg-page-alt dark:bg-page-dark-alt border border-line dark:border-line-dark rounded-[12px]">
+                                    <span class="text-[10.5px] font-semibold text-ink-mute uppercase tracking-[.08em]">Deploys</span>
+                                    <span class="font-display text-[16px] font-bold">142</span>
+                                </div>
+                            </div>
+
+                            <!-- Recent activity row -->
+                            <div class="flex items-center gap-3 p-3 bg-page-alt dark:bg-page-dark-alt border border-line dark:border-line-dark rounded-[12px]">
+                                <span class="grid place-items-center w-8 h-8 rounded-full bg-emerald-500/15 text-emerald-500 flex-none">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                </span>
+                                <div class="flex-1 min-w-0">
+                                    <div class="text-[13px] font-semibold text-ink dark:text-white truncate">Deployment shipped to production</div>
+                                    <div class="text-[11.5px] text-ink-mute">v2.4.1 · just now · by @tanvir</div>
+                                </div>
+                                <div class="flex -space-x-2 flex-none">
+                                    <span class="w-6 h-6 rounded-full border-2 border-white dark:border-surface-dark" style="background: linear-gradient(135deg, #5b8dff, #8a5bff);"></span>
+                                    <span class="w-6 h-6 rounded-full border-2 border-white dark:border-surface-dark" style="background: linear-gradient(135deg, #22d3ee, #5b8dff);"></span>
+                                    <span class="w-6 h-6 rounded-full border-2 border-white dark:border-surface-dark grid place-items-center text-[10px] font-bold text-white" style="background: linear-gradient(135deg, #10b981, #22d3ee);">+5</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Floating chips -->
-                        <div class="absolute -top-4 -left-7 inline-flex items-center gap-2 px-3.5 py-2.5 bg-white dark:bg-surface-dark border border-line dark:border-line-dark rounded-full text-[13px] font-semibold shadow-soft animate-float-y" aria-hidden="true">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-500">
-                                <path d="M12 2L4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z" />
-                                <path d="M9 12l2 2 4-4" />
-                            </svg>
-                            SOC 2 ready
+                        <!-- Floating chip 1: Deployment notification (top-left) -->
+                        <div class="absolute -top-5 -left-6 sm:-left-10 flex items-center gap-2.5 pl-2 pr-4 py-2 bg-white dark:bg-surface-dark border border-line dark:border-line-dark rounded-full text-[13px] font-semibold shadow-soft animate-float-y max-w-[220px]" aria-hidden="true">
+                            <span class="grid place-items-center w-7 h-7 rounded-full bg-emerald-500/15 text-emerald-500 flex-none">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </span>
+                            <div class="flex flex-col leading-tight min-w-0">
+                                <span class="text-[12.5px] font-semibold truncate">Build passed</span>
+                                <span class="text-[11px] text-ink-mute font-normal">12s · 0 errors</span>
+                            </div>
                         </div>
-                        <div class="absolute -bottom-2.5 -right-5 inline-flex items-center gap-2 px-3.5 py-2.5 bg-white dark:bg-surface-dark border border-line dark:border-line-dark rounded-full text-[13px] font-semibold shadow-soft animate-float-y" style="animation-delay: -2s;" aria-hidden="true">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-brand">
-                                <path d="M22 12A10 10 0 1 1 12 2" />
-                                <path d="M22 4L12 14.01l-3-3" />
+
+                        <!-- Floating chip 2: Sprint progress (bottom-right) -->
+                        <div class="absolute -bottom-4 -right-4 sm:-right-8 flex items-center gap-2.5 pl-3 pr-4 py-2.5 bg-white dark:bg-surface-dark border border-line dark:border-line-dark rounded-full text-[13px] font-semibold shadow-soft animate-float-y" style="animation-delay: -2s;" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-brand flex-none">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
                             </svg>
-                            24/7 monitored
+                            <span class="whitespace-nowrap">Sprint 24 · <span class="text-emerald-500">on track</span></span>
                         </div>
                     </div>
                 </div>
@@ -510,48 +567,70 @@
         <section id="about" class="py-[clamp(72px,10vw,128px)] bg-page-alt dark:bg-page-dark-alt">
             <div class="container max-w-[1200px] mx-auto px-6">
                 <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] items-center gap-14 lg:gap-[72px]">
-                    <!-- Visual stack -->
-                    <div class="relative w-full max-w-[460px] mx-auto pt-7 pb-8 px-3.5" data-reveal>
-                        <!-- Main card -->
-                        <div class="w-full p-6 rounded-2xl shadow-big border border-line dark:border-line-dark"
-                             style="background: linear-gradient(135deg, var(--surface-bg, #ffffff), color-mix(in srgb, #eaeeff 60%, var(--surface-bg, #ffffff)));">
-                            <div class="flex items-center gap-3.5 mb-5 min-w-0">
-                                <div class="relative flex-none w-12 h-12 rounded-full bg-grad-primary shadow-[0_0_0_4px_rgba(79,109,255,.15)]">
-                                    <span class="absolute bottom-0.5 right-0.5 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white dark:border-surface-dark"></span>
-                                </div>
-                                <div class="min-w-0 flex-1">
-                                    <div class="font-display font-bold text-[15px] leading-[1.3] truncate">Engineering Team</div>
-                                    <div class="text-[12.5px] text-ink-mute mt-0.5 truncate">42 specialists · 6 timezones</div>
+                    <!-- About visual: team photo with credential badge -->
+                    <div class="relative w-full max-w-[520px] mx-auto" data-reveal>
+                        <!-- Decorative gradient blob behind the image -->
+                        <div class="absolute -inset-4 -z-10 rounded-[32px] bg-gradient-to-br from-brand/15 via-brand-accent/15 to-brand-cyan/10 blur-2xl opacity-60" aria-hidden="true"></div>
+
+                        <!-- Image card -->
+                        <figure class="relative rounded-3xl overflow-hidden shadow-big border border-line dark:border-line-dark bg-page-alt dark:bg-page-dark-alt">
+                            <img
+                                src="assets/images/about-team.jpg"
+                                alt="Trust-IT engineering team collaborating around a laptop"
+                                loading="lazy"
+                                decoding="async"
+                                width="1200"
+                                height="800"
+                                class="block w-full h-full object-cover aspect-[4/5] transition-transform duration-700 hover:scale-[1.03]"
+                                onerror="this.parentElement.classList.add('img-failed'); this.remove();"
+                            />
+
+                            <!-- Fallback shown if the image fails to load -->
+                            <div class="img-fallback absolute inset-0 hidden grid-cols-1 place-items-center bg-gradient-to-br from-brand via-brand-accent to-brand-cyan text-white aspect-[4/5]" aria-hidden="true">
+                                <div class="text-center px-8">
+                                    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-3 opacity-90"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                    <div class="font-display font-bold text-xl mb-1">Our Engineering Team</div>
+                                    <div class="text-sm opacity-90">42 senior engineers · 6 timezones</div>
                                 </div>
                             </div>
-                            <div class="h-2 w-full bg-line dark:bg-line-dark rounded-full overflow-hidden mb-3.5">
-                                <span class="block h-full rounded-full bg-grad-primary animate-bar-grow" style="--w: 92%;"></span>
-                            </div>
-                            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1.5 text-[13px] text-ink-soft dark:text-white/70">
-                                <span><strong class="text-ink dark:text-white font-display mr-1">92%</strong>client retention</span>
-                                <span><strong class="text-ink dark:text-white font-display mr-1">4.9</strong>avg rating</span>
+
+                            <!-- Subtle bottom gradient for caption legibility -->
+                            <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/65 via-black/25 to-transparent pointer-events-none" aria-hidden="true"></div>
+
+                            <!-- Caption strip on the image -->
+                            <figcaption class="absolute inset-x-0 bottom-0 p-5 sm:p-6 sm:pb-[60px] pb-[30px] text-white">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-dot"></span>
+                                    <span class="text-[11.5px] font-semibold tracking-[.12em] uppercase opacity-90">Our Team</span>
+                                </div>
+                                <div class="font-display font-bold text-lg sm:text-xl leading-tight">42 senior engineers</div>
+                                <div class="text-[13px] opacity-80">Across 6 timezones, shipping daily</div>
+                            </figcaption>
+                        </figure>
+
+                        <!-- Single floating credential badge (top-right) -->
+                        <div class="absolute -top-4 -right-4 sm:-right-6 flex items-center gap-3 pl-3 pr-4 py-2.5 bg-white dark:bg-surface-dark border border-line dark:border-line-dark rounded-full shadow-soft animate-float-y z-20" style="animation-delay: -1s;">
+                            <span class="grid place-items-center w-9 h-9 rounded-full bg-emerald-500/12 text-emerald-500 flex-none">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                            </span>
+                            <div class="leading-tight">
+                                <div class="font-display font-bold text-[14px]">SOC 2 Type II</div>
+                                <div class="text-[11.5px] text-ink-mute">Certified</div>
                             </div>
                         </div>
 
-                        <!-- Floating chip 1: SOC 2 -->
-                        <div class="absolute -top-2.5 -right-3.5 w-[200px] flex items-center gap-2.5 px-3.5 py-3 bg-white dark:bg-surface-dark border border-line dark:border-line-dark rounded-[14px] shadow-soft animate-float-y z-20" style="animation-delay: -1s;">
-                            <div class="grid place-items-center w-9 h-9 rounded-[10px] bg-emerald-500/12 text-emerald-500 flex-none">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><path d="M22 4L12 14.01l-3-3" /></svg>
+                        <!-- Stats card (bottom-left) — bridges image + page surface -->
+                        <div class="absolute -bottom-5 -left-4 sm:-left-6 flex items-center gap-3 px-4 py-3 bg-white dark:bg-surface-dark border border-line dark:border-line-dark rounded-2xl shadow-soft z-20">
+                            <div class="flex items-center gap-1">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                             </div>
-                            <div>
-                                <div class="font-display font-bold text-[15px]">SOC 2 Type II</div>
-                                <div class="text-[12.5px] text-ink-mute">Certified</div>
-                            </div>
-                        </div>
-
-                        <!-- Floating chip 2: Top 1% Agency -->
-                        <div class="absolute -bottom-2.5 -left-3.5 w-[200px] flex items-center gap-2.5 px-3.5 py-3 bg-white dark:bg-surface-dark border border-line dark:border-line-dark rounded-[14px] shadow-soft animate-float-y z-20" style="animation-delay: -3s;">
-                            <div class="grid place-items-center w-9 h-9 rounded-[10px] bg-amber-500/12 text-amber-500 flex-none">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-                            </div>
-                            <div>
-                                <div class="font-display font-bold text-[15px]">Top 1% Agency</div>
-                                <div class="text-[12.5px] text-ink-mute">Clutch.co 2025</div>
+                            <div class="leading-tight">
+                                <div class="font-display font-bold text-[14px]">4.9 / 5 rating</div>
+                                <div class="text-[11.5px] text-ink-mute">Top 1% on Clutch.co</div>
                             </div>
                         </div>
                     </div>
@@ -752,25 +831,129 @@
     </main>
 
     <!-- ========== FOOTER ========== -->
-    <footer class="py-10 bg-page-alt dark:bg-page-dark-alt border-t border-line dark:border-line-dark">
-        <div class="container max-w-[1200px] mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-5 flex-wrap">
-                <div>
-                    <a href="#home" class="inline-flex items-center gap-2.5 font-display font-bold text-[17px] text-ink dark:text-white">
+    <footer class="relative pt-16 pb-8 bg-page-alt dark:bg-page-dark-alt border-t border-line dark:border-line-dark overflow-hidden">
+        <!-- Decorative glow at the top -->
+        <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[60vw] h-72 rounded-full blur-[120px] bg-brand/10 dark:bg-brand-accent/10 pointer-events-none" aria-hidden="true"></div>
+
+        <div class="container max-w-[1200px] mx-auto px-6 relative">
+            <!-- Top: 5-column grid with brand + 4 menu groups -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-line dark:border-line-dark">
+
+                <!-- Brand + tagline + newsletter (spans more on large screens) -->
+                <div class="col-span-2 md:col-span-3 lg:col-span-4">
+                    <a href="#home" class="inline-flex items-center gap-2.5 font-display font-bold text-lg text-ink dark:text-white mb-4">
                         <span class="grid place-items-center w-9 h-9 rounded-[10px] bg-gradient-to-br from-[#5b8dff]/15 to-[#8a5bff]/15">
                             <svg viewBox="0 0 24 24" width="24" height="24"><path fill="url(#brandGrad)" d="M12 2L3 6v6c0 5 3.8 9.4 9 10 5.2-.6 9-5 9-10V6l-9-4z" /><path fill="#fff" d="M10.6 14.6l-2.3-2.3-1.4 1.4 3.7 3.7 6.5-6.5-1.4-1.4z" /></svg>
                         </span>
                         <span>Trust<span class="bg-grad-primary bg-clip-text text-transparent">-IT</span></span>
                     </a>
-                    <p class="text-[13px] text-ink-mute mt-1.5">Trust-IT (BD) Ltd · Engineering reliable software since 2017.</p>
-                </div>
-                <div class="flex flex-col md:flex-row md:items-center gap-3 md:gap-6 text-[13.5px] text-ink-mute">
-                    <span>© <span id="year"></span> Trust-IT (BD) Ltd. All rights reserved.</span>
-                    <div class="flex gap-4.5 gap-x-5">
-                        <a href="#" class="hover:text-ink dark:hover:text-white transition-colors">Privacy</a>
-                        <a href="#" class="hover:text-ink dark:hover:text-white transition-colors">Terms</a>
-                        <a href="#" class="hover:text-ink dark:hover:text-white transition-colors">Security</a>
+                    <p class="text-sm leading-relaxed text-ink-soft dark:text-white/70 mb-5 max-w-sm">
+                        Trust-IT (BD) Ltd is a senior engineering studio building reliable cloud, security, and AI systems for ambitious teams since 2017.
+                    </p>
+
+                    <!-- Newsletter -->
+                    <form id="newsletterForm" novalidate class="mb-6">
+                        <label for="newsletterEmail" class="block text-[12px] font-semibold uppercase tracking-[.1em] text-ink-mute mb-2">Stay in the loop</label>
+                        <div class="flex gap-2">
+                            <input type="email" id="newsletterEmail" name="email" required
+                                   class="flex-1 min-w-0 px-3.5 py-2.5 text-sm bg-white dark:bg-page-dark border border-line dark:border-line-dark rounded-xl outline-none transition-all focus:border-brand focus:ring-4 focus:ring-brand/15 placeholder:text-ink-mute"
+                                   placeholder="you@company.com" autocomplete="email" />
+                            <button type="submit" class="btn btn-primary btn-sm flex-none px-4">
+                                <span class="newsletter-label">Subscribe</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
+                            </button>
+                        </div>
+                        <p id="newsletterMsg" class="hidden mt-2 text-[12.5px]" aria-live="polite"></p>
+                    </form>
+
+                    <!-- Social icons -->
+                    <div class="flex items-center gap-2.5">
+                        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="grid place-items-center w-9 h-9 rounded-full border border-line dark:border-line-dark bg-white dark:bg-surface-dark text-ink-soft dark:text-white/70 transition-all hover:text-brand hover:border-brand hover:-translate-y-0.5">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" class="grid place-items-center w-9 h-9 rounded-full border border-line dark:border-line-dark bg-white dark:bg-surface-dark text-ink-soft dark:text-white/70 transition-all hover:text-brand hover:border-brand hover:-translate-y-0.5">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="grid place-items-center w-9 h-9 rounded-full border border-line dark:border-line-dark bg-white dark:bg-surface-dark text-ink-soft dark:text-white/70 transition-all hover:text-brand hover:border-brand hover:-translate-y-0.5">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.17c-3.34.73-4.04-1.41-4.04-1.41-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.83.58A12 12 0 0 0 12 .297"/></svg>
+                        </a>
+                        <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" aria-label="Dribbble" class="grid place-items-center w-9 h-9 rounded-full border border-line dark:border-line-dark bg-white dark:bg-surface-dark text-ink-soft dark:text-white/70 transition-all hover:text-brand hover:border-brand hover:-translate-y-0.5">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72M19.7 5.51c-3.82 0-9.27 1.13-13.7 5.18M2.07 12.27c5.58 0 11.84-1.5 16.66-6.07"/></svg>
+                        </a>
                     </div>
+                </div>
+
+                <!-- Company links -->
+                <nav aria-label="Company" class="lg:col-span-2">
+                    <h4 class="text-[12px] font-bold uppercase tracking-[.1em] text-ink dark:text-white mb-4">Company</h4>
+                    <ul class="flex flex-col gap-2.5 text-sm">
+                        <li><a href="#about" class="text-ink-soft dark:text-white/70 hover:text-brand transition-colors">About</a></li>
+                        <li><a href="#" class="text-ink-soft dark:text-white/70 hover:text-brand transition-colors">Careers <span class="ml-1 inline-block px-1.5 py-0.5 text-[10px] font-bold rounded bg-emerald-500/15 text-emerald-500 align-middle">3 open</span></a></li>
+                        <li><a href="#" class="text-ink-soft dark:text-white/70 hover:text-brand transition-colors">Press &amp; Media</a></li>
+                        <li><a href="#" class="text-ink-soft dark:text-white/70 hover:text-brand transition-colors">Partners</a></li>
+                        <li><a href="#contact" class="text-ink-soft dark:text-white/70 hover:text-brand transition-colors">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Services links -->
+                <nav aria-label="Services" class="lg:col-span-2">
+                    <h4 class="text-[12px] font-bold uppercase tracking-[.1em] text-ink dark:text-white mb-4">Services</h4>
+                    <ul class="flex flex-col gap-2.5 text-sm">
+                        <li><a href="#services" class="text-ink-soft dark:text-white/70 hover:text-brand transition-colors">Cloud Engineering</a></li>
+                        <li><a href="#services" class="text-ink-soft dark:text-white/70 hover:text-brand transition-colors">Cybersecurity</a></li>
+                        <li><a href="#services" class="text-ink-soft dark:text-white/70 hover:text-brand transition-colors">Custom Development</a></li>
+                        <li><a href="#services" class="text-ink-soft dark:text-white/70 hover:text-brand transition-colors">AI &amp; Automation</a></li>
+                        <li><a href="#services" class="text-ink-soft dark:text-white/70 hover:text-brand transition-colors">DevOps &amp; SRE</a></li>
+                        <li><a href="#services" class="text-ink-soft dark:text-white/70 hover:text-brand transition-colors">Product Strategy</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Resources links -->
+                <nav aria-label="Resources" class="lg:col-span-2">
+                    <h4 class="text-[12px] font-bold uppercase tracking-[.1em] text-ink dark:text-white mb-4">Resources</h4>
+                    <ul class="flex flex-col gap-2.5 text-sm">
+                        <li><a href="#insights" class="text-ink-soft dark:text-white/70 hover:text-brand transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-ink-soft dark:text-white/70 hover:text-brand transition-colors">Case Studies</a></li>
+                        <li><a href="#" class="text-ink-soft dark:text-white/70 hover:text-brand transition-colors">Documentation</a></li>
+                        <li><a href="#" class="text-ink-soft dark:text-white/70 hover:text-brand transition-colors">Whitepapers</a></li>
+                        <li>
+                            <a href="#" class="inline-flex items-center gap-1.5 text-ink-soft dark:text-white/70 hover:text-brand transition-colors">
+                                Status
+                                <span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-semibold rounded-full bg-emerald-500/12 text-emerald-500">
+                                    <span class="w-1 h-1 rounded-full bg-emerald-500 animate-pulse-dot"></span>
+                                    All systems
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- Legal links -->
+                <nav aria-label="Legal" class="lg:col-span-2">
+                    <h4 class="text-[12px] font-bold uppercase tracking-[.1em] text-ink dark:text-white mb-4">Legal</h4>
+                    <ul class="flex flex-col gap-2.5 text-sm">
+                        <li><a href="#" class="text-ink-soft dark:text-white/70 hover:text-brand transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-ink-soft dark:text-white/70 hover:text-brand transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="text-ink-soft dark:text-white/70 hover:text-brand transition-colors">Cookie Policy</a></li>
+                        <li><a href="#" class="text-ink-soft dark:text-white/70 hover:text-brand transition-colors">Security</a></li>
+                        <li><a href="#" class="text-ink-soft dark:text-white/70 hover:text-brand transition-colors">GDPR</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 pt-6 text-[13px] text-ink-mute">
+                <p>© <span id="year"></span> Trust-IT (BD) Ltd. All rights reserved · Uttara, Dhaka · Bangladesh</p>
+                <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+                    <a href="mailto:trustitbdltd@gmail.com" class="inline-flex items-center gap-1.5 hover:text-brand transition-colors">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
+                        trustitbdltd@gmail.com
+                    </a>
+                    <span class="hidden sm:inline w-px h-3 bg-line dark:bg-line-dark"></span>
+                    <button id="langBtn" type="button" class="inline-flex items-center gap-1.5 hover:text-brand transition-colors" aria-label="Language">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        English (BD)
+                    </button>
                 </div>
             </div>
         </div>

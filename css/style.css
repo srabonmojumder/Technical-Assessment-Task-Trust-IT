@@ -23,6 +23,9 @@
     background-color: rgba(10, 13, 26, .92);
 }
 
+/* ---------- About image: graceful fallback when the photo fails ---------- */
+figure.img-failed .img-fallback { display: grid; }
+
 /* ---------- Marquee: fade edges + hover-pause ---------- */
 .marquee {
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
